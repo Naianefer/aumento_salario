@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Só um aumentinho</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: black;
+            overflow: hidden;
+            position: relative;
+        }
+
+        img {
+            width: 400px;
+            height: auto;
+            margin-top: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: rgb(255, 190, 26);
+            font-size: 64px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+            margin-top: -50px;
+            text-shadow: 0 0 8px black;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 40px;
+        }
+
+        p {
+            color: white;
+            font-size: 32px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 700;
+            margin-top: -55px;
+            text-shadow: 0 0 6px black;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 40px;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: -30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        button {
+            width: 250px;
+            color: white;
+            height: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: black;
+            border: none;
+            box-shadow: 0 0 20px rgb(12, 76, 196);
+            transition: 0.3s;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        #pos {
+            background: linear-gradient(145deg, rgb(13, 60, 190), rgb(22, 123, 231));
+        }
+
+        #pos:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 60px rgb(1, 90, 255);
+            transition: 0.5s;
+        }
+
+        #neg {
+            background: linear-gradient(145deg, rgb(219, 5, 5), rgb(249, 65, 65));
+            box-shadow: 0 0 20px rgb(255, 0, 0);
+            position: relative;
+            z-index: 1;
+        }
+
+        #neg:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 60px rgb(255, 0, 0);
+            transition: 0.5s;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: auto;
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+    <img src="./mendigo-pica-pau.webp" alt="">
+    <h1>Olá, chefe</h1>
+    <p>O senhor poderia, por gentileza,<br> me dar um aumento?</p>
+    <div class="botoes">
+        <a href="./aumento-concedido.html"><button id="pos">CLARO, MEU MELHOR FUNCIONÁRIO</button></a>
+        <button id="neg">NÃO</button>
+    </div>
+    <video src="./Rain-Background.mp4" autoplay loop muted></video>
+    <script>
+        const botao = document.querySelector('#neg');
+
+        let moveX = 0;
+        let moveY = 0;
+
+        botao.addEventListener("mouseover", function () {
+            const rect = botao.getBoundingClientRect();
+            const maxX = window.innerWidth - rect.width - 40;
+            const maxY = window.innerHeight - rect.height - 40;
+            moveX = Math.random() * maxX;
+            moveY = Math.random() * maxY;
+            moveX = Math.min(Math.max(moveX, 0), maxX);
+            moveY = Math.min(Math.max(moveY, 0), maxY);
+            botao.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        })
+
+    </script>
+</body>
+</html>
